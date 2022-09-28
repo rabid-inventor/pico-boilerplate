@@ -23,13 +23,26 @@ add_executable(${NAME}
 # This assumes `pimoroni-pico` is stored alongside your project
 include(common/pimoroni_i2c)
 include(libraries/pico_explorer/pico_explorer)
-# include(libraries/pico_display/pico_display)
+include(libraries/bitmap_fonts/bitmap_fonts)
+include(libraries/hershey_fonts/hershey_fonts)
 
+target_include_directories(${NAME} PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}
+        )
 # Don't forget to link the libraries you need!
 target_link_libraries(${NAME}
     pimoroni_i2c
-    pico_explorer # <-- List libraries here!
-)
+    pico_stdlib              # for core functionality
+    pico_cyw43_arch_lwip_poll     # we need Wifi to access the GPIO, but we don't need anything else
+    hardware_spi 
+    hardware_pwm 
+    hardware_dma  
+    hardware_rtc
+    pico_graphics)
+
+# enable usb output
+pico_enable_stdio_usb(${NAME} 1)
+
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(${NAME})
