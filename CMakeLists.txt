@@ -25,6 +25,8 @@ include(common/pimoroni_i2c)
 include(libraries/pico_explorer/pico_explorer)
 include(libraries/bitmap_fonts/bitmap_fonts)
 include(libraries/hershey_fonts/hershey_fonts)
+include(drivers/st7567/st7567)
+include(common/pimoroni_bus)
 
 target_include_directories(${NAME} PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
@@ -57,3 +59,5 @@ install(FILES
 set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
 set(CPACK_GENERATOR "ZIP" "TGZ")
 include(CPack)
+
+add_subdirectory(gfx_pack)
