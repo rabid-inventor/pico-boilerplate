@@ -25,7 +25,9 @@ include(common/pimoroni_i2c)
 include(libraries/pico_explorer/pico_explorer)
 include(libraries/bitmap_fonts/bitmap_fonts)
 include(libraries/hershey_fonts/hershey_fonts)
+include(libraries/gfx_pack/gfx_pack)
 include(drivers/st7567/st7567)
+include(drivers/button/button)
 include(common/pimoroni_bus)
 
 target_include_directories(${NAME} PRIVATE
