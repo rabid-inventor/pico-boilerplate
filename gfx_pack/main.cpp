@@ -17,8 +17,8 @@
 
 using namespace pimoroni;
 
-ST7567 st7567(128, 64, get_spi_pins(BG_SPI_FRONT));
-PicoGraphics_PenRGB332 graphics(st7567.width, st7567.height, nullptr);
+ST7567 st7567(128, 64, {PIMORONI_SPI_DEFAULT_INSTANCE, 17, SPI_DEFAULT_SCK, SPI_DEFAULT_MOSI, PIN_UNUSED, 16, SPI_BG_FRONT_PWM});
+PicoGraphics_Pen1Bit graphics(st7567.width, st7567.height, nullptr);
 
 
 
@@ -31,7 +31,19 @@ Button button_y(gfx_pack::Y);
 int main(){
 
     stdio_init_all();
-    sleep_ms(2000);
+    //graphics.set_thickness(2);
+    while (1){
+    graphics.set_pen(0);
+    graphics.clear();
+    graphics.set_pen(15);
+    graphics.line(Point(0,0),Point(64,64));
+    //graphics.text(message, 10, 20, 0.6f);
+    //graphics.text("(TEST TEXT)", Point(10, 10), true, 2.0f);
+    st7567.update(&graphics);
+    
+    sleep_ms(1000);
     printf("Hello world\n");
-    return 1;
+    st7567.update(&graphics);
+    }
+    //return 1;
 }
