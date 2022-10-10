@@ -36,14 +36,20 @@ int main(){
     graphics.set_pen(0);
     graphics.clear();
     graphics.set_pen(15);
+    
+    graphics.set_pixel(Point(0,0));
+    graphics.set_pixel(Point(0,0));
+    graphics.set_pixel(Point(0,0));
+    //graphics.set_pixel(Point(64,64)); 
     graphics.line(Point(0,0),Point(64,64));
     //graphics.text(message, 10, 20, 0.6f);
     //graphics.text("(TEST TEXT)", Point(10, 10), true, 2.0f);
     st7567.update(&graphics);
     
-    sleep_ms(1000);
+    sleep_ms(5000);
     printf("Hello world\n");
     st7567.update(&graphics);
     }
+
     //return 1;
 }
