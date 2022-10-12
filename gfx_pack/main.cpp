@@ -31,21 +31,36 @@ Button button_y(gfx_pack::Y);
 int main(){
 
     stdio_init_all();
+    sleep_ms(2000);
     //graphics.set_thickness(2);
     while (1){
     graphics.set_pen(0);
     graphics.clear();
     graphics.set_pen(15);
     
-    graphics.set_pixel(Point(0,0));
-    graphics.set_pixel(Point(0,0));
-    graphics.set_pixel(Point(0,0));
+    graphics.set_pixel(Point(7,0));
+    graphics.set_pixel(Point(120,6));
+    graphics.set_pixel(Point(64,4));
     //graphics.set_pixel(Point(64,64)); 
-    graphics.line(Point(0,0),Point(64,64));
+    //graphics.line(Point(0,0),Point(64,8));
     //graphics.text(message, 10, 20, 0.6f);
-    //graphics.text("(TEST TEXT)", Point(10, 10), true, 2.0f);
-    st7567.update(&graphics);
     
+    for (uint8_t x=0 ; x < 70 ; x ++){
+        graphics.set_pen(0);
+        graphics.clear();
+        graphics.set_pen(15);
+        graphics.text("(TEST TEXT)", Point(x, 0),60, 0.8f);
+        st7567.update(&graphics);
+        //sleep_ms(100);
+    }
+    for (uint8_t x=70 ; x > 0 ; x --){
+        graphics.set_pen(0);
+        graphics.clear();
+        graphics.set_pen(15);
+        graphics.text("(TEST TEXT)", Point(x, 0),60, 0.8f);
+        st7567.update(&graphics);
+        //sleep_ms(100);
+    }
     sleep_ms(5000);
     printf("Hello world\n");
     st7567.update(&graphics);
